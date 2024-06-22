@@ -1,8 +1,8 @@
 :root {
 	/* Travel distance of background animation 
 	   Should be based on height of chosen image */
-	--bg-height: 640px;
-	--bg-height-cookies: 620px;
+	--bg-height: 1024px;
+	--bg-height-cookies: 640px;
 	/* Colors for easy modification and reference */
 	--bg-color-dark: rgba(0, 14, 29, 1);
 	--bg-color-light: rgba(230, 240, 255, 1);
