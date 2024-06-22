@@ -1,0 +1,225 @@
+:root {
+	/* Travel distance of background animation 
+	   Should be based on height of chosen image */
+	--bg-height: 1024px;
+	--bg-height-cookies: 620px;
+	/* Colors for easy modification and reference */
+	--bg-color-dark: rgba(0, 14, 29, 1);
+	--bg-color-light: rgba(230, 240, 255, 1);
+	--bg-color-dark-body: rgba(0, 7, 14, 0.85);
+}
+
+/*
+	Background animation
+*/
+@keyframes bg-scrolling {
+	100% {
+		background-position: 0 var(--bg-height);
+	}
+}
+@keyframes bg-scrolling-cookies {
+	100% {
+		background-position: 0 var(--bg-height-cookies);
+	}
+}
+
+/* 
+	Stretches top/bottom to fill entire page so there is no gap
+*/
+html,
+body,
+main {
+	height: 100vh;
+	min-height: 100vh;
+	border: 0;
+}
+
+html {
+	cursor: url("images/cursor.png"), auto;
+	background-image: url("images/rain-large.png");
+	background-repeat: repeat;
+	background-color: var(--bg-color-dark);
+	animation: bg-scrolling 1s infinite;
+	animation-timing-function: linear;
+	width: 100%;
+}
+
+#html.cookieMode {
+	background-image: url("images/cookie-rain-large.png");
+	background-color: var(--bg-color-light);
+	animation: bg-scrolling-cookies 1.5s infinite;
+	animation-timing-function: linear;
+}
+
+/*
+	Essentially the same as main, but separating them lets main's vertical height
+	extend further and avoid a gap at the top
+*/
+body {
+	text-align: center;
+	font-family: "Lucida Console", "Courier New", monospace;
+	color: white;
+	/*background-image: url('images/alt-bg-2.png');
+	background-repeat: repeat;*/
+	background-color: var(--bg-color-dark-body);
+	width: max-content;
+	margin: auto;
+	overflow: scroll; /* Stops page from getting cut off */
+	overflow-x: hidden; /* Disables horizontal scrollbar */
+	height: fit-content;
+}
+
+/* 
+	removes the weird gap at the top from top margin of h1 overflowing beyond body/main
+*/
+main > h1:first-child {
+	margin-top: 0;
+	padding-top: 0.67em;
+}
+
+/*
+	The main "page" in the center containing most of the content
+*/
+main {
+	/* min-height: 100dvh; */
+	height: 100%;
+	width: 85vw;
+	/* position: relative; */
+}
+
+funland {
+	color: blueviolet;
+}
+
+ip {
+	color: yellow;
+}
+
+cookieButton {
+	position: fixed;
+	bottom: 16px;
+	right: 2vw;
+}
+
+/*
+	Screenshot section
+*/
+.screenshots {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin: 32px;
+	justify-content: space-evenly;
+	/*text-shadow: 0px 0px 2px yellow;*/
+}
+
+.screenshotDiv {
+	width: 100%;
+	height: 100%;
+	margin: 32px;
+}
+
+.quote {
+	text-align: left;
+}
+
+/*
+	Alternating screenshot images
+*/
+.leftScreenshotAlign {
+	max-width: 60%;
+	max-height: 60%;
+	float: left;
+	margin-right: 32px;
+	border: 4px solid white;
+	box-shadow: -8px 8px blueviolet, 8px -8px yellow;
+}
+.rightScreenShotAlign {
+	max-width: 60%;
+	max-height: 60%;
+	float: right;
+	margin-left: 32px;
+	border: 4px solid white;
+	box-shadow: 8px 8px blueviolet, -8px -8px yellow;
+}
+
+/*
+	Logo spin
+*/
+#logo {
+	transition: all 3s ease-in-out;
+}
+#logo:hover {
+	transform: rotate(1080deg);
+}
+
+/*
+	Cookie button resize
+*/
+#cookieButton {
+	transition: all 0.1s ease-in-out;
+}
+#cookieButton:hover {
+	transform: scale(1.2, 1.2);
+}
+
+/* 
+	online player green circle icon
+*/
+#circleIcon.onlineColor {
+	background-color: limegreen;
+	box-shadow: 0 0 5px 2px green;
+}
+
+#circleIcon.offlineColor {
+	background-color: red;
+	box-shadow: 0 0 5px 2px rgb(233, 60, 60);
+}
+
+#circleIcon.loadingColor {
+	background-color: grey;
+	box-shadow: inset 0 0 0px 1px white;
+}
+
+#circleIcon {
+	width: 15px;
+	height: 15px;
+	border-radius: 100%;
+	background-color: grey;
+	box-shadow: inset 0 0 0px 1px white;
+	transition: 0.3s 0s cubic-bezier(0, 0, 0, 1);
+}
+
+/* online status element (contains circle icon and player count) */
+#onlineStatus {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	margin-top: 25px;
+}
+
+#onlineStatus > div {
+	margin: 0 8px;
+	flex-basis: 1;
+}
+
+/* 
+	static player count width
+*/
+#playerCount {
+	width: 3em;
+}
+
+/* 
+	scrollbar appearance
+*/
+::-webkit-scrollbar {
+	background-color: transparent;
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color:rgba(251, 255, 3, 0.35);
+	border-radius: 50px 50px;
+}
